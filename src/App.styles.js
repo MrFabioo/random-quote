@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   font-family: 'Raleway';
   font-size: 28px;
+  transition: linear 0.75s;
 `;
 
 export const QuoteBox = styled.div`
@@ -22,6 +23,7 @@ export const QuoteBox = styled.div`
 export const Text = styled.div`
   display: flex;
   flex-direction: row;
+  transition: linear 0.75s;
   svg {
     margin-right: 10px;
   }
@@ -44,12 +46,13 @@ export const Buttons = styled.div`
     border: none;
     border-radius: 3px;
     color: white;
+    transition: linear 0.75s;
     cursor: pointer;
   }
 `;
 
 export const Brands = styled.div`
-  button {
+  a {
     margin-right: 5px;
   }
   svg {

@@ -50,6 +50,8 @@ function App() {
     let randomIndex = Math.floor(Math.random() * quotes.length);
     let randomColor = Math.floor(Math.random() * colors.length);
 
+    if (color === colors[randomColor] || randomQuote === quotes[randomIndex])
+      return newQuote();
     setRandomQuote(quotes[randomIndex]);
     setColor(colors[randomColor]);
   };
@@ -66,12 +68,37 @@ function App() {
         </Author>
         <Buttons>
           <Brands>
-            <button style={{ backgroundColor: color }}>
-              <FontAwesomeIcon icon={brands('twitter')} />
-            </button>
-            <button style={{ backgroundColor: color }}>
-              <FontAwesomeIcon icon={brands('tumblr')} />
-            </button>
+            <a
+              title='Tweet this quote!'
+              target='_blank'
+              rel='noreferrer'
+              href={
+                'https://twitter.com/intent/tweet?hashtags=quotes&related=mrfabio&text=' +
+                encodeURIComponent(
+                  `"${randomQuote.text}" ${randomQuote.author}`
+                )
+              }
+            >
+              <button style={{ backgroundColor: color }}>
+                <FontAwesomeIcon icon={brands('twitter')} />
+              </button>
+            </a>
+            <a
+              title='Post this quote on tumblr!'
+              target='_blank'
+              rel='noreferrer'
+              href={
+                'https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=' +
+                encodeURIComponent(randomQuote.author) +
+                '&content=' +
+                encodeURIComponent(randomQuote.text) +
+                '&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button'
+              }
+            >
+              <button style={{ backgroundColor: color }}>
+                <FontAwesomeIcon icon={brands('tumblr')} />
+              </button>
+            </a>
           </Brands>
 
           <NewQuote style={{ backgroundColor: color }} onClick={newQuote}>
